@@ -1,19 +1,49 @@
 class discover {
   // Xpaths:
-  splash_screen ="div[class='inner-swipe-up-wrapper'] h6";
-  header = "li[class='single-tab single-tab--active'] button[class='tab-btn']";
+  splash_screen = ".splash-des";
+  explore_communities = ".btn--large.btn--large-secondary";
+  My_Feed = "li[id='hoverEffect-0'] button[class='tab-btn']";
+  signup_modal_Feed = ".signUp-page-heading";
+  bookmark_postcard =
+    "div[id='dashboardListing-0'] div[class='community-card-footer community-card-footer--mobile'] img[class='UnFilled']";
+  Guest_user_Profile_icon = ".border-radius-50";
+  signup_modal_guser_icon =".signUp-page-heading";
   // Methods:
-  verify_splashScreen(){
-    cy.get(this.splash_screen).should('have.text','Swipe up to Start');
+  verify_splashScreen() {
+    cy.get(this.splash_screen).should(
+      "have.text",
+      "Unlimited content from countless communities"
+    );
   }
-  verify_page(){
-    cy.get(this.header).should('have.text','Discover');
+  verify_page() {
+    cy.get(this.explore_communities).should("have.text", "Explore Communities");
   }
-  swipeup_SplashScreen(){
-    cy.get(this.splash_screen)
-   .trigger('pointerdown', { which: 1 })
-   .trigger('pointermove', 'up')
-   .trigger('pointerup', { force: true })
+  swipeup_SplashScreen() {
+    cy.get(".inner-swipe-up-wrapper")
+      .trigger("mousedown", { which: 1 })
+      .trigger("mousemove", { clientX: 120, clientY: 300 })
+      .trigger("mouseup", { force: true });
+  }
+  click_MyFeed() {
+    cy.get(this.My_Feed).click();
+  }
+  verify_signup_modal_Feed() {
+    cy.get(this.signup_modal_Feed).should(
+      "have.text",
+      "Please sign up to access this feature"
+    );
+  }
+  click_Bookmark_Postcard() {
+    cy.get(this.bookmark_postcard).click();
+  }
+  click_guest_user_icon(){
+    cy.get(this.Guest_user_Profile_icon).click();
+  }
+  verify_signup_modal_guser_icon(){
+    cy.get(this.signup_modal_guser_icon).should("have.text","The profile feature is only available for registered users, register today to set up your profile");
+  }
+  scroll_bottom_page(){
+    cy.scrollTo('bottom')
   }
 }
 
