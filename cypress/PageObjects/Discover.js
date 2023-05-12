@@ -27,6 +27,7 @@ class discover {
       .trigger("mouseup", { force: true });
   }
   click_MyFeed() {
+    cy.wait(5000);
     cy.get(this.My_Feed).click();
   }
   verify_signup_modal_Feed() {
@@ -62,6 +63,7 @@ class discover {
   }
   click_explore_communities() {
     cy.get(this.explore_communities).click();
+    cy.wait(5000);
   }
   click_side_menu(){
     cy.get(this.hamburger_icon).click();
