@@ -148,7 +148,7 @@ describe("Open Application Flows", () => {
     ds.verify_signup_modal_Feed();
   });
 
-  it.only("Verify open community detail from search",()=>{
+  it("Verify open community detail from search",()=>{
     ds.swipeup_SplashScreen();
     ds.click_explore_communities();
     cl.click_search_icon();
@@ -157,5 +157,21 @@ describe("Open Application Flows", () => {
     cd.verify_page();
     cd.click_back_arrow();
     ss.verify_search_page_all();
+  })
+
+  // Test Cases Community Detail
+  it("Veify open community redirect about",()=>{
+    ds.swipeup_SplashScreen();
+    ds.click_explore_communities();
+    cl.click_community();
+    cd.verify_open_about_submenu();
+  })
+
+  it.only("Verify Join community on community detail",()=>{
+    ds.swipeup_SplashScreen();
+    ds.click_explore_communities();
+    cl.click_community();
+    cd.click_join_community_button();
+    ds.verify_signup_modal_Feed();
   })
 });
